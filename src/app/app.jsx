@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import Listing from './components/listing';
+import Article from './components/article';
 
 class App extends Component{
 
@@ -16,7 +17,7 @@ class App extends Component{
 
   render() {
     return (
-      <div>
+      <div className="container">
         <header>
           <nav className="nav">
             <a className="nav-link active" href="#">Active</a>
@@ -41,6 +42,7 @@ render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Listing}></IndexRoute>
+      <Route path="article/:id" component={Article}/>
     </Route>
   </Router>
 ), document.getElementById('reactApp'));

@@ -4,27 +4,43 @@
  */
 
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
+import { render } from 'react-dom';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import Listing from './components/listing';
 
 class App extends Component{
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
     return (
       <div>
-        Hello World!
+        <header>
+          <nav className="nav">
+            <a className="nav-link active" href="#">Active</a>
+            <a className="nav-link" href="#">Link</a>
+            <a className="nav-link" href="#">Link</a>
+          </nav>
+        </header>
+
+        {this.props.children}
+
+        <footer>
+          Hello World Copyrighting :)
+        </footer>
+
       </div>
     );
   }
 
-};
+}
 
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('reactApp')
-);
+render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={Listing}></IndexRoute>
+    </Route>
+  </Router>
+), document.getElementById('reactApp'));

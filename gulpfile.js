@@ -41,7 +41,7 @@ gulp.task('build:html', () => {
 });
 
 gulp.task('watch', ['build'], () => {
-  gulp.watch(config.files.js, ['build:js']).on('change', watchLog);
+  gulp.watch(config.files.js, ['pre:build:js']).on('change', watchLog);
   gulp.watch(config.files.html, ['build:html']).on('change', watchLog);
 
   function watchLog(event) {

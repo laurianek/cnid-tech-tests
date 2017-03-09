@@ -15,7 +15,6 @@ export default class Listing extends Component {
   componentDidMount() {
     getArticles()
       .subscribe(articles => {
-        console.log(articles);
         this.setState({ articles });
       },
         error => {});

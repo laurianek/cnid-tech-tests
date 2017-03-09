@@ -12,12 +12,15 @@ export default class Article extends Component {
     this.getBody = this.getBody.bind(this);
   }
 
+  getDummyData() {
+    return 'my baba needs a dummy';
+  }
+
   componentDidMount() {
     getArticles()
       .map(articles => articles
-        .filter(article => article.id === Number(this.props.params.id))[0])
+        .find(article => article.id === Number(this.props.params.id)))
       .subscribe(article => {
-          console.log('hey here', article, this.props.params);
           this.setState({ article });
         },
         error => {});
